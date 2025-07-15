@@ -183,7 +183,7 @@ export class CapacitorVoiceRecorderWeb extends WebPlugin implements CapacitorVoi
   }
 
   private _prepareInstanceForNextOperation(): void {
-    if (this._mediaRecorder != null && this._mediaRecorder.state === 'recording') {
+    if (this._mediaRecorder != null && this._mediaRecorder.state !== 'inactive') {
       try {
         this._mediaRecorder.stop();
         this._mediaStream!.getTracks().forEach((track) => track.stop());
